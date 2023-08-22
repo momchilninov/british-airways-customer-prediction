@@ -22,4 +22,9 @@ def read_csv(relative_path):
 # Call the function to read the CSV files
 BA_reviews_df = read_csv(PATH)
 
-BA_reviews_df
+
+BA_reviews_df["reviews"] = BA_reviews_df["reviews"].str.replace(r'^.*?\w*\s*\|', '', regex=True) #matches everything from the start of the line up to and including the first occurrence of "|" (including the "|" character itself)
+
+BA_reviews_df["reviews"] = BA_reviews_df["reviews"].str.strip()
+
+
